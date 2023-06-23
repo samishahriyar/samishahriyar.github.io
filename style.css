@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+
+#nav{
+    width: 100%;
+    height: 12vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #19e9c6;
+}
+
+
+
+#links{
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+}
+
+
+#nav a{
+    text-decoration: none;
+    color: black;
+}
+
+
+#links a{
+    font-size: 150%;
+}
+
+
+#logo{
+    font-size: 340%;
+}
+
+
+#links a{
+    font-size: 150%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.underline{
+    height: 2px;
+    width: 0;
+    background-color: #000;
+    transition: width 0.15s ease-out;
+}
+
+
+a{
+    cursor: pointer;
+}
+#main{
+    width: 100%;
+    height: 88vh;
+    overflow: hidden;
+}
+
+
+#home{
+    height: 100%;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: homeshake 0.5s ease-in-out 0s infinite alternate;
+}
+
+
+#findme{
+    height: 100%;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#aboutme{
+    height: 100%;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#notice{
+    padding: 20px;
+    animation: homeshake 0.5s ease-in-out 0s infinite alternate;
+}
+
+
+#findmelinks{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#findmelinks a{
+    color: #000;
+    text-decoration: none;
+    font-size: 60px;
+}
+
+
+@keyframes homeshake{
+    0%{
+        transform: translate(0, 10px);
+        }
+    100%{
+        transform: translate(0, -20px);
+    }
+}
