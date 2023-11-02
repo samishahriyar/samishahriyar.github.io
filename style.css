@@ -72,7 +72,7 @@ a{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    animation: homeshake 0.5s ease-in-out 0s infinite alternate;
+    /* animation: homeshake 0.5s ease-in-out 0s infinite alternate; */
 }
 
 
@@ -98,7 +98,7 @@ a{
 
 #notice{
     padding: 20px;
-    animation: homeshake 0.5s ease-in-out 0s infinite alternate;
+    /* animation: homeshake 0.5s ease-in-out 0s infinite alternate; */
 }
 
 
@@ -115,7 +115,7 @@ a{
     font-size: 60px;
 }
 
-
+/*
 @media screen and (max-width: 630px) {
     #links a{
         font-size: 130%;
@@ -204,3 +204,4 @@ a{
         transform: translate(0, -20px);
     }
 }
+*/
