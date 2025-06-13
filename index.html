@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>This site is perpetually under construction :')</title>
 </head>
 <body>
-    <p style="font-family: consolas;">Vai time paina, time paile site ta banabo insha allah.</p>
+    <p style="font-family: consolas;">Vai time paina, time paile site ta banabo insha-allah.</p>
+    <script>
+        words = ["This...", "This site...", "This site is...", "perpetually...", "perpetually under...", "construction.", "Sorry...", "Sorry for...", "inconvenience.", ":')"];
+        setInterval(()=>{document.title = words[(words.indexOf(document.title) + 1) % words.length]}, 1000);
+    </script>
 </body>
 </html>
