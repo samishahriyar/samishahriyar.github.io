@@ -1,0 +1,267 @@
+/* ============================================================
+layout.css: the big page areas: navbar, hero (top of page), section spacing and footer.
+============================================================ */
+
+/* Sticky top bar */
+.nav {
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+}
+
+/* Navbar layout: theme switch on the left, links on the right */
+.nav .wrap {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.5rem;
+  min-height:3.75rem;
+}
+
+/* Navigation link list (pushed to the right) */
+.menu {
+  display:flex;
+  align-items:center;
+  gap:.4rem;
+  list-style:none;
+  margin:0 0 0 auto;
+  padding:0;
+}
+
+/* One navigation link */
+.menu a {
+  display:block;
+  padding:.4rem .8rem;
+  border-radius:.5rem;
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* Link on hover */
+.menu a:hover {
+  color:var(--ink);
+}
+
+/* Link of the section currently being read (set by js/ui.js) */
+.menu a[aria-current="true"] {
+  color:var(--accent-ink);
+  background:var(--accent);
+}
+
+/* Menu button, shown only on phones */
+.burger {
+  display:none;
+  place-items:center;
+  width:2.4rem;
+  height:2.4rem;
+  border:1px solid var(--line);
+  border-radius:.6rem;
+  background:var(--surface);
+}
+.burger:hover {
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* Theme switch track (sun and moon icons) */
+.switch {
+  position:relative;
+  flex:none;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  width:4.5rem;
+  height:2.4rem;
+  padding:0 .7rem;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:var(--surface);
+  color:var(--muted);
+  font-size:.85rem;
+}
+.switch:hover {
+  border-color:var(--accent);
+}
+
+/* Sliding knob of the theme switch */
+.knob {
+  position:absolute;
+  top:.2rem;
+  left:.2rem;
+  width:1.9rem;
+  height:1.9rem;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--accent);
+  color:var(--accent-ink);
+  transition:transform .25s;
+}
+
+/* Knob moves right in dark mode */
+.switch[data-mode="dark"] .knob {
+  transform:translateX(2.1rem);
+}
+
+/* Hero */
+/* Top introduction area */
+.hero {
+  padding:4.5rem 0 4rem;
+}
+
+/* Text on the left, profile picture on the right */
+.hero .wrap {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:3rem;
+  align-items:center;
+}
+
+/* "Hello, I'm" line */
+.hello {
+  margin:0 0 .5rem;
+  color:var(--muted);
+  font-size:1.15rem;
+}
+
+/* Your name */
+h1 {
+  font:700 clamp(2rem,6vw,3.75rem)/1.1 var(--display);
+  margin:0 0 1rem;
+  letter-spacing:-.02em;
+  overflow-wrap:anywhere;
+}
+
+/* Typed tagline */
+.tagline {
+  min-height:1.8em;
+  margin:0 0 .75rem;
+  font-size:1.3rem;
+  color:var(--accent);
+  font-weight:600;
+}
+
+/* Blinking cursor after the tagline */
+.tagline::after {
+  content:"";
+  display:inline-block;
+  width:2px;
+  height:1.1em;
+  margin-left:3px;
+  vertical-align:-.15em;
+  background:currentColor;
+  animation:blink 1s steps(1) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity:0;
+  }
+}
+
+/* Short welcome paragraph */
+.intro {
+  max-width:34rem;
+  margin:0 0 1.75rem;
+  color:var(--muted);
+}
+
+/* Row of hero buttons */
+.btns {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.75rem;
+}
+
+/* Outlined button */
+.btn {
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding:.65rem 1.3rem;
+  border:2px solid var(--accent);
+  border-radius:.6rem;
+  text-decoration:none;
+  font-weight:600;
+  color:var(--accent);
+}
+
+/* Filled button (add class "primary") */
+.btn.primary {
+  background:var(--accent);
+  color:var(--accent-ink);
+}
+
+/* Button lifts slightly on hover */
+.btn:hover {
+  transform:translateY(-2px);
+}
+
+/* Circular frame for the profile photo or the blank icon */
+.avatar {
+  width:clamp(9rem,26vw,15rem);
+  aspect-ratio:1/1;
+  border-radius:50%;
+  border:3px solid var(--accent);
+  background:var(--surface);
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  color:var(--muted);
+  font-size:clamp(3.5rem,11vw,6.5rem);
+}
+
+/* Photo fills the circle and is cropped to a circle */
+.avatar img {
+  display:block;
+  width:100%;
+  height:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+/* Sections */
+/* Spacing and divider line for every section */
+section {
+  padding:4rem 0;
+  border-top:1px solid var(--line);
+}
+
+/* Section headings */
+h2 {
+  font:700 clamp(1.7rem,4vw,2.3rem)/1.15 var(--display);
+  margin:0 0 1.25rem;
+  letter-spacing:-.01em;
+}
+
+/* Intro paragraph under a heading */
+.lead {
+  max-width:40rem;
+  color:var(--muted);
+  margin:0 0 2.25rem;
+}
+
+/* Sub-heading inside a section */
+.sub {
+  font:600 1.15rem var(--display);
+  margin:2.5rem 0 1.25rem;
+}
+
+/* Page footer */
+footer {
+  border-top:1px solid var(--line);
+  padding:1.75rem 0;
+  color:var(--muted);
+  font-size:.95rem;
+}
+
+/* Footer text rows */
+footer .wrap {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:.5rem;
+}

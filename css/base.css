@@ -1,0 +1,88 @@
+/* ============================================================
+base.css: design tokens (colours, fonts), page reset and basic elements.
+Edit the colours here to restyle the whole website.
+============================================================ */
+
+/* Design tokens (dark theme is the default). Change colours and fonts here. */
+:root {
+  --bg:#0D111C;
+  --surface:#151B2B;
+  --ink:#E8ECF6;
+  --muted:#98A3BC;
+  --line:#263049;
+  --accent:#8EA2FF;
+  --accent-ink:#0D111C;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Source Sans 3",system-ui,sans-serif;
+}
+
+/* Light colours, used when the visitor's system is light and they have not picked a theme. */
+@media (prefers-color-scheme:light) {
+  :root:not([data-theme]) {
+    --bg:#F6F7FB;
+    --surface:#FFFFFF;
+    --ink:#12172A;
+    --muted:#55607A;
+    --line:#D9DDEA;
+    --accent:#3D4FD6;
+    --accent-ink:#FFFFFF;
+  }
+}
+
+/* Light colours, used when the visitor picks light with the switch. */
+:root[data-theme="light"] {
+  --bg:#F6F7FB;
+  --surface:#FFFFFF;
+  --ink:#12172A;
+  --muted:#55607A;
+  --line:#D9DDEA;
+  --accent:#3D4FD6;
+  --accent-ink:#FFFFFF;
+}
+
+/* Padding and borders count inside element widths */
+* {
+  box-sizing:border-box;
+}
+
+/* Smooth scrolling for menu links; leaves room under the sticky navbar */
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:4.5rem;
+}
+
+/* Page background, text and base font; "relative" lets the background layer fill the page */
+body {
+  position:relative;
+  margin:0;
+  overflow-x:clip;
+  background:var(--bg);
+  color:var(--ink);
+  font:1.0625rem/1.65 var(--body);
+  transition:background .25s,color .25s;
+}
+
+/* Links use the accent colour */
+a {
+  color:var(--accent);
+}
+
+/* Buttons inherit the page font */
+button {
+  font:inherit;
+  color:inherit;
+  cursor:pointer;
+}
+
+/* Visible outline when navigating with the keyboard */
+:focus-visible {
+  outline:3px solid var(--accent);
+  outline-offset:3px;
+}
+
+/* Centred content column used by every section */
+.wrap {
+  max-width:60rem;
+  margin:0 auto;
+  padding:0 1.25rem;
+}

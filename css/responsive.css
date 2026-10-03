@@ -1,0 +1,110 @@
+/* ============================================================
+responsive.css: adjustments for smaller and larger screens, and reduced motion.
+Loaded last so it can override the other files.
+============================================================ */
+
+/* Accessibility: switch off animation for people who ask for less motion */
+@media (prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior:auto;
+  }
+  * {
+    transition:none!important;
+    animation:none!important;
+  }
+}
+
+/* Tablets and phones (760px and narrower): menu becomes a dropdown, layouts become one column */
+@media (max-width:760px) {
+  .burger {
+    display:grid;
+  }
+  .menu {
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    flex-direction:column;
+    align-items:stretch;
+    gap:.2rem;
+    margin:0;
+    padding:.75rem 1.25rem 1rem;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  .menu.open {
+    display:flex;
+  }
+  .hero {
+    padding:2.5rem 0 3rem;
+  }
+  .hero .wrap {
+    grid-template-columns:minmax(0,1fr);
+    gap:2rem;
+    justify-items:start;
+  }
+  .avatar {
+    order:-1;
+  }
+  section {
+    padding:3rem 0;
+  }
+}
+
+/* Small phones (480px and narrower) */
+@media (max-width:480px) {
+  body {
+    font-size:1rem;
+  }
+  .wrap {
+    padding:0 1rem;
+  }
+  .btn {
+    flex:1 1 100%;
+    justify-content:center;
+  }
+  .tagline {
+    font-size:1.1rem;
+  }
+  .timeline li {
+    grid-template-columns:2.5rem minmax(0,1fr);
+    gap:.8rem;
+  }
+  .timeline li:not(:last-child)::before {
+    left:1.25rem;
+    top:2.5rem;
+  }
+  .ico {
+    width:2.5rem;
+    height:2.5rem;
+    font-size:1rem;
+  }
+  .timeline h3 {
+    font-size:1.08rem;
+  }
+  .soc {
+    width:3rem;
+    height:3rem;
+    font-size:1.3rem;
+  }
+  .mail {
+    width:100%;
+  }
+  .mail a {
+    overflow-wrap:anywhere;
+  }
+  footer .wrap {
+    flex-direction:column;
+  }
+}
+
+/* Very large screens: slightly bigger text and wider content */
+@media (min-width:1500px) {
+  html {
+    font-size:112.5%;
+  }
+  .wrap {
+    max-width:72rem;
+  }
+}

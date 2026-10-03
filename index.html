@@ -1,14 +1,272 @@
 <!DOCTYPE html>
+<!--
+  PORTFOLIO WEBSITE: Md. Shahriyar Kabir Sami
+  ------------------------------------------------------------------
+  Files:
+    index.html            this page (the content)
+    css/base.css          colours, fonts, basic styles
+    css/layout.css        navbar, hero, sections, footer
+    css/components.css    reusable pieces (cards, timeline, icons...)
+    css/background.css    animated background shapes
+    css/responsive.css    phone / tablet / large-screen rules
+    js/config.js          simple ON/OFF settings   <-- start here
+    js/utils.js           tiny helper functions
+    js/theme.js           light / dark switch
+    js/ui.js              menu, cards, copy button, tagline, photo
+    js/background.js      parallax background shapes
+    profile.jpg           your photo (optional, see js/config.js)
+
+  Look for "COMPONENT" comments: each one is a block you can copy and
+  paste to make more copies (another school, card, link, project...).
+-->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Md. Shahriyar Kabir Sami | Portfolio</title>
+<meta name="description" content="Personal portfolio of Md. Shahriyar Kabir Sami, a student at BUET.">
+
+<!-- Google Fonts: Bricolage Grotesque (headings) and Source Sans 3 (text) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome: all the icons. Find more names at https://fontawesome.com/icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+<!-- Our own styles (the order matters: responsive.css must stay last) -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/background.css">
+<link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <p style="font-family: consolas;">Vai time paina, time paile site ta banabo insha-allah.</p>
-    <script>
-        words = ["This...", "This site...", "This site is...", "perpetually...", "perpetually under...", "construction.", "Sorry...", "Sorry for...", "inconvenience.", ":')"];
-        setInterval(()=>{document.title = words[(words.indexOf(document.title) + 1) % words.length]}, 1000);
-    </script>
+
+<!-- Background shapes are drawn into this empty layer by js/background.js -->
+<div class="bg" id="bg" aria-hidden="true"></div>
+
+<!-- ================= NAVBAR ================= -->
+<header class="nav">
+  <div class="wrap">
+
+    <!-- Theme switch (left). Controlled by js/theme.js -->
+    <button class="switch" id="theme" type="button" aria-label="Switch colour theme">
+      <i class="fa-solid fa-sun" aria-hidden="true"></i><i class="fa-solid fa-moon" aria-hidden="true"></i>
+      <span class="knob"><i class="fa-solid fa-sun" aria-hidden="true"></i></span>
+    </button>
+
+    <!-- Page links (right). Each <li> is one link; its href must match a section id below -->
+    <ul class="menu" id="menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#interests">Interests</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+
+    <!-- Menu button (phones only) -->
+    <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO (top of the page) ================= -->
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="hello">Hello, I'm</p>
+        <h1>Md. Shahriyar Kabir Sami</h1>
+        <!-- Typed tagline: change the text or switch it off in js/config.js -->
+        <p class="tagline" id="tagline" aria-live="polite"></p>
+        <p class="intro">Welcome to my personal website. Take a look around, and feel free to get in touch.</p>
+        <div class="btns">
+          <a class="btn primary" href="#about"><i class="fa-solid fa-user"></i>About me</a>
+          <a class="btn" href="#connect"><i class="fa-solid fa-address-book"></i>Contact me</a>
+        </div>
+      </div>
+      <!-- Profile picture: shows a blank icon or profile.jpg (see js/config.js) -->
+      <div class="avatar" id="avatar" aria-label="Profile picture"></div>
+    </div>
+  </div>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
+    <div class="wrap">
+      <h2>About me</h2>
+      <p class="lead">Hello, and thank you for visiting. Here you can read about my education, my interests and the best ways to reach me.</p>
+
+      <h3 class="sub">Education</h3>
+      <!-- Oldest first. To add an entry, copy one whole <li>...</li> block and paste it in order. -->
+      <ol class="timeline">
+
+        <!-- COMPONENT: Education entry -->
+        <li>
+          <span class="ico"><i class="fa-solid fa-school"></i></span>
+          <div>
+            <h3>Adarsha School, Narayanganj</h3>
+            <p><span class="year">SSC 2023</span></p>
+            <div class="chips"><span>Science group</span></div>
+          </div>
+        </li>
+
+        <!-- COMPONENT: Education entry -->
+        <li>
+          <span class="ico"><i class="fa-solid fa-book-open-reader"></i></span>
+          <div>
+            <h3>Dhaka College</h3>
+            <p><span class="year">HSC 2025</span></p>
+            <div class="chips"><span>Science group</span></div>
+          </div>
+        </li>
+
+        <!-- COMPONENT: Education entry (class "now" highlights the current one and uses the "Current" pill) -->
+        <li class="now">
+          <span class="ico"><i class="fa-solid fa-graduation-cap"></i></span>
+          <div>
+            <h3>Bangladesh University of Engineering and Technology (BUET)<span class="tag">Current</span></h3>
+            <p><span class="year">Ongoing</span></p>
+            <div class="chips"><span>Department of Civil Engineering</span><span>Level 1</span><span>Term 1</span></div>
+          </div>
+        </li>
+      </ol>
+
+      <!-- ABOUT EXTRAS (optional): uncomment any block you want, then edit the text.
+
+      <h3 class="sub">A little more about me</h3>
+      <p class="lead">Write two or three personal sentences here: what motivates you, or what you want to achieve.</p>
+
+      <h3 class="sub">Languages</h3>
+      <div class="chips"><span>Bangla</span><span>English</span></div>
+
+      <h3 class="sub">Goals</h3>
+      <div class="grid">
+        COMPONENT: Info card (copy this <div> to add more)
+        <div class="info"><h4>Short term</h4><p>For example: do well in my first year.</p></div>
+        <div class="info"><h4>Long term</h4><p>For example: the kind of work I hope to do in the future.</p></div>
+      </div>
+
+      <h3 class="sub">Fun facts</h3>
+      <div class="grid">
+        <div class="info"><h4>Outside my studies</h4><p>Hobbies such as reading, football, cricket or gaming.</p></div>
+        <div class="info"><h4>Favourite things</h4><p>A book, a film, a food or a place you like.</p></div>
+      </div>
+
+      <h3 class="sub">Achievements</h3>
+      <div class="grid">
+        <div class="info"><h4>Title of achievement</h4><p>A short description and the year.</p></div>
+      </div>
+      -->
+    </div>
+  </section>
+
+  <!-- ================= INTERESTS ================= -->
+  <section id="interests">
+    <div class="wrap">
+      <h2>Interests</h2>
+      <p class="lead">Select a card to read more.</p>
+      <div class="grid">
+
+        <!-- COMPONENT: Interest card. Copy the whole <button>. Change the icon, title and text.
+             The text inside <p class="more"> is hidden until the card is selected. -->
+        <button class="card" type="button" aria-expanded="false">
+          <span class="ico"><i class="fa-solid fa-code"></i></span>
+          <strong>Programming <i class="fa-solid fa-chevron-down chev"></i></strong>
+          <p class="more" hidden>I write Python and enjoy using code to solve problems.</p>
+        </button>
+
+        <!-- COMPONENT: Interest card -->
+        <button class="card" type="button" aria-expanded="false">
+          <span class="ico"><i class="fa-solid fa-robot"></i></span>
+          <strong>Robotics <i class="fa-solid fa-chevron-down chev"></i></strong>
+          <p class="more" hidden>I'm fascinated by how machines sense, decide and move.</p>
+        </button>
+
+        <!-- COMPONENT: Interest card -->
+        <button class="card" type="button" aria-expanded="false">
+          <span class="ico"><i class="fa-solid fa-microchip"></i></span>
+          <strong>Electronics <i class="fa-solid fa-chevron-down chev"></i></strong>
+          <p class="more" hidden>I like building circuits and experimenting with microcontrollers.</p>
+        </button>
+
+        <!-- COMPONENT: Interest card with a small note (the optional <small> line) -->
+        <button class="card" type="button" aria-expanded="false">
+          <span class="ico"><i class="fa-solid fa-compass-drafting"></i></span>
+          <strong>Civil Engineering <i class="fa-solid fa-chevron-down chev"></i></strong>
+          <small>Currently pursuing</small>
+          <p class="more" hidden>This is my degree subject at BUET, and I'm learning the fundamentals.</p>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+      <div class="projects">
+
+        <!-- COMPONENT: "Coming soon" box. Delete it when you add your first project. -->
+        <div class="soon">
+          <i class="fa-solid fa-hammer"></i>
+          <strong>Coming soon</strong>
+          <p>I haven't published a project yet. When I do, it will appear here.</p>
+        </div>
+
+        <!-- COMPONENT: Project card. Uncomment, edit, and copy it for each project.
+        <article class="project">
+          <h3>Project title</h3>
+          <p>One or two sentences about what the project does and what you learned.</p>
+          <div class="chips"><span>Python</span><span>ESP32</span></div>
+          <div class="links">
+            <a href="https://github.com/your-username/your-repo" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Code</a>
+            <a href="https://example.com" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live demo</a>
+          </div>
+        </article>
+        -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONNECT ================= -->
+  <section id="connect">
+    <div class="wrap">
+      <h2>Connect with me</h2>
+
+      <!-- Social icons. EDIT every href. To add one, copy a whole <a> line and change the icon name. -->
+      <div class="socials">
+        <!-- COMPONENT: Social icon -->
+        <a class="soc" href="https://facebook.com/mdshahriyarsami" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="soc" href="https://instagram.com/_shahriyar.sami_" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <!-- WhatsApp: use your number with the country code, without + or spaces -->
+        <a class="soc" href="https://wa.me/shahriyarsami" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a class="soc" href="https://t.me/shahriyarsami" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+        <a class="soc" href="https://discord.com/users/shahriyarsami  " target="_blank" rel="noopener" aria-label="Discord" title="Discord"><i class="fa-brands fa-discord"></i></a>
+      </div>
+
+      <!-- COMPONENT: Email box (address, mail link and Copy button). Copy the whole <div> for a second address. -->
+      <div class="mail">
+        <i class="fa-solid fa-envelope"></i>
+        <a href="mailto:mdshahriyarkabirsami@gmail.com">mdshahriyarkabirsami@gmail.com</a>
+        <button class="copy" type="button">Copy</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <span>&copy; <span data-year>2026</span> Md. Shahriyar Kabir Sami</span>
+    <span>Built with the help of <a href="https://claude.ai" target="_blank" rel="noopener">Claude</a>, an AI assistant by Anthropic.</span>
+  </div>
+</footer>
+
+<!-- Scripts: the order matters (config and utils must come first) -->
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/background.js"></script>
 </body>
 </html>

@@ -1,0 +1,334 @@
+/* ============================================================
+components.css: reusable pieces. Each block marked COMPONENT matches a
+copy-paste block in index.html (timeline entry, interest card, project card,
+social icon, email box, info card).
+============================================================ */
+
+/* Education timeline */
+/* COMPONENT Education timeline: the list */
+.timeline {
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+/* One timeline entry: icon column + text column */
+.timeline li {
+  display:grid;
+  grid-template-columns:3rem 1fr;
+  gap:1.1rem;
+  position:relative;
+  padding-bottom:1.75rem;
+}
+
+/* Vertical line joining entries (not drawn after the last one) */
+.timeline li:not(:last-child)::before {
+  content:"";
+  position:absolute;
+  left:1.5rem;
+  top:3rem;
+  bottom:0;
+  width:2px;
+  margin-left:-1px;
+  background:var(--line);
+}
+
+/* Round icon badge (used in the timeline and cards) */
+.ico {
+  display:grid;
+  place-items:center;
+  width:3rem;
+  height:3rem;
+  border-radius:50%;
+  background:var(--surface);
+  border:2px solid var(--line);
+  color:var(--accent);
+  font-size:1.15rem;
+}
+
+/* Highlighted badge for the current institution (class "now") */
+.timeline .now .ico {
+  border-color:var(--accent);
+}
+
+/* Institution name */
+.timeline h3 {
+  margin:.1rem 0 .15rem;
+  font:600 1.2rem var(--display);
+}
+
+/* Year line */
+.timeline p {
+  margin:0;
+  color:var(--muted);
+}
+
+/* Year text colour */
+.year {
+  font-weight:600;
+  color:var(--accent);
+}
+
+/* Small "Current" pill */
+.tag {
+  display:inline-block;
+  margin-left:.5rem;
+  padding:.05rem .6rem;
+  border-radius:999px;
+  background:var(--accent);
+  color:var(--accent-ink);
+  font:600 .8rem var(--body);
+  vertical-align:.15em;
+}
+
+/* Row of small pills */
+.chips {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  margin-top:.6rem;
+}
+
+/* One pill */
+.chips span {
+  padding:.15rem .75rem;
+  border:1px solid var(--line);
+  border-radius:999px;
+  font-size:.92rem;
+  background:var(--surface);
+}
+
+/* Interests */
+/* Responsive grid used for cards */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));
+  gap:1rem;
+  align-items:start;
+}
+
+/* COMPONENT Interest card (a button that expands) */
+.card {
+  text-align:left;
+  width:100%;
+  padding:1.1rem;
+  border:1px solid var(--line);
+  border-radius:.9rem;
+  background:var(--surface);
+}
+
+/* Card border highlights on hover or when open */
+.card:hover,.card[aria-expanded="true"] {
+  border-color:var(--accent);
+}
+
+/* Icon spacing inside a card */
+.card .ico {
+  margin-bottom:.75rem;
+  border-color:var(--line);
+}
+
+/* Card title row */
+.card strong {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font:600 1.1rem var(--display);
+}
+
+/* Small arrow */
+.card .chev {
+  transition:transform .2s;
+  color:var(--muted);
+}
+
+/* Arrow flips when the card is open */
+.card[aria-expanded="true"] .chev {
+  transform:rotate(180deg);
+}
+
+/* Hidden description text */
+.card .more {
+  margin:.6rem 0 0;
+  color:var(--muted);
+  font-size:.98rem;
+}
+
+/* Small note under a card title */
+.card small {
+  display:block;
+  margin-top:.2rem;
+  color:var(--accent);
+  font-weight:600;
+}
+
+/* Projects */
+/* COMPONENT Projects grid */
+.projects {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));
+  gap:1.25rem;
+}
+
+/* "Coming soon" placeholder box */
+.soon {
+  grid-column:1/-1;
+  border:2px dashed var(--line);
+  border-radius:.9rem;
+  padding:2.5rem 1.5rem;
+  text-align:center;
+}
+
+/* Placeholder icon */
+.soon i {
+  font-size:2rem;
+  color:var(--accent);
+  margin-bottom:.75rem;
+}
+
+/* Placeholder heading */
+.soon strong {
+  display:block;
+  font:700 1.6rem var(--display);
+}
+
+/* Placeholder text */
+.soon p {
+  max-width:30rem;
+  margin:.4rem auto 0;
+  color:var(--muted);
+}
+
+/* COMPONENT Project card */
+.project {
+  display:flex;
+  flex-direction:column;
+  gap:.75rem;
+  padding:1.4rem;
+  border:1px solid var(--line);
+  border-radius:.9rem;
+  background:var(--surface);
+}
+
+/* Project title */
+.project h3 {
+  margin:0;
+  font:600 1.25rem var(--display);
+}
+
+/* Project description */
+.project p {
+  margin:0;
+  color:var(--muted);
+}
+
+/* Project links row */
+.project .links {
+  display:flex;
+  gap:1rem;
+  margin-top:auto;
+}
+
+/* One project link */
+.project .links a {
+  font-weight:600;
+  text-decoration:none;
+}
+
+/* Connect */
+/* COMPONENT Social icon row */
+.socials {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.9rem;
+  margin:0 0 1.75rem;
+}
+
+/* One round social icon button */
+.soc {
+  display:grid;
+  place-items:center;
+  width:3.4rem;
+  height:3.4rem;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:var(--surface);
+  color:var(--ink);
+  font-size:1.5rem;
+  text-decoration:none;
+  transition:transform .2s,background .2s,color .2s;
+}
+
+/* Icon button fills with the accent colour on hover */
+.soc:hover {
+  transform:translateY(-4px);
+  background:var(--accent);
+  color:var(--accent-ink);
+  border-color:var(--accent);
+}
+
+/* COMPONENT Email box */
+.mail {
+  display:inline-flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:.75rem;
+  padding:.75rem 1rem;
+  border:1px solid var(--line);
+  border-radius:.9rem;
+  background:var(--surface);
+}
+
+/* Envelope icon */
+.mail > i {
+  color:var(--accent);
+  font-size:1.25rem;
+}
+
+/* Email address text */
+.mail a {
+  color:var(--ink);
+  font-weight:600;
+  text-decoration:none;
+}
+
+/* Email address on hover */
+.mail a:hover {
+  color:var(--accent);
+}
+
+/* Copy button */
+.copy {
+  padding:.3rem .85rem;
+  border:1px solid var(--line);
+  border-radius:.5rem;
+  background:transparent;
+  font-size:.92rem;
+}
+
+/* Copy button on hover */
+.copy:hover {
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* About extras (used by the commented blocks in the About section) */
+/* COMPONENT Info card (used by the optional About blocks) */
+.info {
+  padding:1.1rem;
+  border:1px solid var(--line);
+  border-radius:.9rem;
+  background:var(--surface);
+}
+
+/* Info card title */
+.info h4 {
+  margin:0 0 .35rem;
+  font:600 1.05rem var(--display);
+}
+
+/* Info card text */
+.info p {
+  margin:0;
+  color:var(--muted);
+}
