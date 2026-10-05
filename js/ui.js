@@ -12,7 +12,7 @@ function initProfile() {
 
   const img = new Image();
   img.src = "profile.jpg";
-  img.alt = "Portrait of Md. Shahriyar Kabir Sami";
+  img.alt = "Portrait of Md Shahriyar Kabir Sami";
   img.onerror = () => { avatar.innerHTML = blank; };   // photo missing: fall back to the icon
   avatar.appendChild(img);
 }
